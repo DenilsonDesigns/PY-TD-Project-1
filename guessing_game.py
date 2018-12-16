@@ -8,22 +8,38 @@ import random
 
 
 def start_game():
-    """Psuedo-code Hints
+    # intro message
+    print("Welcome to PyGuess")
+    print("==================")
+    # generate a random num 1-10
+    answer = random.randint(1, 10)
+    # generate variable to hold num of guesses
+    num_guesses = 0
+    # boolean to break loop
+    guessed_correct = False
+    # continuously prompt player to guess until correct
 
-    When the program starts, we want to:
-    ------------------------------------
-    1. Display an intro/welcome message to the player.
-    2. Store a random number as the answer/solution.
-    3. Continuously prompt the player for a guess.
-      a. If the guess greater than the solution, display to the player "It's lower".
-      b. If the guess is less than the solution, display to the player "It's higher".
+    while guessed_correct == False:
+        try:
+            print("Guess a number between 1 and 10")
+            guess = input()
+            guess = int(guess)
+        except ValueError:
+            print("Please enter only integers between 1 and 10 (inclusive)")
+            continue
+        if guess > 10 or guess < 1:
+            print("Please choose a number between 1 and 10 (inclusive)")
+            continue
+        num_guesses += 1
+        if guess < answer:
+            print("It's higher")
+        elif guess > answer:
+            print("It's lower")
+        if guess == answer:
+            print("You guessed correct! It took you {} tries!".format(num_guesses))
+            print("Exiting game: Thanks for playing! :)")
+            guessed_correct = True
 
-    4. Once the guess is correct, stop looping, inform the user they "Got it"
-         and show how many attempts it took them to get the correct number.
-    5. Let the player know the game is ending, or something that indicates the game is over.
-
-    ( You can add more features/enhancements if you'd like to. )
-    """
     # write your code inside this function.
 
 
